@@ -1,70 +1,273 @@
-# Getting Started with Create React App
+# lionxStorage
+[![npm version](https://img.shields.io/npm/v/lionxstorage.svg?color=blue)](https://www.npmjs.com/package/lionxstorage)
+[![downloads](https://img.shields.io/npm/dt/lionxstorage?color=blue)](https://npm-stat.com/charts.html?package=lionxstorage)
+[![code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?color=green)](https://github.com/prettier/prettier)
+[![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hm/lionxstorage?color=orange)](https://cdn.jsdelivr.net/npm/lionxstorage@0.1.7/dist/lionxstorage.js)
+![maintained](https://img.shields.io/badge/maintained-yes-blueviolet)
+[![license](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+lionxStorage is a Javascript and React library that provides a unified interface for storing and retrieving data using various storage mechanisms such as `localStorage`, `sessionStorage`, `cookies`, and `indexedDB`. It is designed to work seamlessly in both Javascript and React environments.
 
-### `npm start`
+See the [examples folder](https://github.com/lionxStorage/lionxStorage/blob/main/examples) for more examples
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+You can install lionxStorage via npm:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install lionxstorage --save
+```
 
-### `npm run build`
+or To use lionxStorage in HTML, just drop a single Javascript file into your page:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```html
+<script src="https://cdn.jsdelivr.net/npm/lionxstorage@latest/dist/lionxstorage.js"></script>
+<script>
+  // Create an instance with the desired storage type
+  const storeData = new lionxStorage('localStorage');
+  storeData.set('key', 'value');
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  // Get data
+  console.log( storeData.get('key') ); // Output: 'value'
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</script>
+```
 
-### `npm run eject`
+## 🌱 API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+lionxStorage simplifies data management with a consistent API across various storage types. Use `storeData.set` to store data, `storeData.get` to retrieve it, `storeData.update` to modify, and `storeData.remove` to delete. This uniform API design, applicable to different storage types, promotes ease of use and ensures a hassle-free experience for developers.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Here is a list of lionxStorage API interfaces along with their respective arguments and detailed explanations.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🔸 ``` storeData.set(key, value, options) ```
+  - Sets a key-value pair in the storage
+    1. `key: string` **[Required]** The unique identifier (string) under which the value will be stored.
+    2. `value: string|Date|Number|Object|Boolean|Null` **[Required]** The data of any type that you want to associate with the key.
+    3. `options: Object` **[optional]** Additional options for storage (e.g., expiration, path for cookies).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### 🔸 ``` storeData.get(key) ```
+  - Retrieves the value associated with the specified key.
+    1. `key: string`: The unique identifier (string) for which the associated value will be retrieved. 
+  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 🔸 ``` storeData.update(key, value) ```
+  - Updates the value associated with the specified key.
+    1. `key: string` **[Required]** The unique identifier (string) of the data to be updated.
+    2. `value: string|Date|Number|Object|Boolean|Null` **[Required]** The new data of any type that will replace the existing value.
+  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🔸 ``` storeData.remove(key) ```
+  - Removes the data associated with the specified key.
+    1. `key: string` **[Required]** The unique identifier (string) for which the associated data will be removed. 
 
-### Code Splitting
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## 🔥 Usage in React Environment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```jsx
+import React from 'react';
+import lionxStorage from 'lionxstorage';
 
-### Making a Progressive Web App
+const ExampleComponent = () => {
+  // Create an instance with the desired storage type
+  const storeData = new lionxStorage('localStorage');
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  // Set data
+  storeData.set('user', { name: "john" });
 
-### Advanced Configuration
+  // Get data
+  const storedValue = storeData.get('user');
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  return (
+    <div>
+      <p>Stored Value: {storedValue.name}</p>
+    </div>
+  );
+};
+```
 
-### Deployment
+## 🌟 Supported Storage Types
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Each storage type serves specific purposes, and choosing the right one depends on factors like data size, persistence requirements, and the need for advanced querying capabilities. Consider the characteristics of each storage type to make informed decisions based on your application's requirements.
 
-### `npm run build` fails to minify
+  1. [localStorage](#localstorage)
+  2. [sessionStorage](#sessionstorage)
+  3. [cookies](#cookies)
+  4. [indexedDB](#indexeddb)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### <a id="localstorage"> localStorage: </a>
+
+**Description :** Provides persistent storage with a capacity of approximately 5 MB, allowing data to persist across browser sessions.
+
+**Use Case :** Ideal for storing critical data that needs to persistently survive browser closures, such as user preferences, settings, or cached data for quicker page loading.
+
+#### Example Usage
+
+```javascript
+// Example usage for localStorage
+const localStorageSDK = new lionxStorage("localStorage");
+
+localStorageSDK.set("user", { id: 1, name: "John" });
+console.log(localStorageSDK.get("user"));
+
+localStorageSDK.update("user", { id: 1, name: "John Doe" });
+console.log(localStorageSDK.get("user"));
+
+localStorageSDK.remove("user");
+console.log(localStorageSDK.get("user"));
+```
+<br/>
+
+---
+
+### <a id="sessionstorage"> sessionStorage: </a>
+
+**Description :** Similar to localStorage, but data is cleared when the session ends, offering a temporary solution for session-specific information.
+
+**Use Case :** Suitable for scenarios where data needs to be retained only during the current session, ensuring privacy and cleanliness after the user logs out or closes the tab.
+
+#### Example Usage
+
+```javascript
+// Example usage for sessionStorage
+const sessionStorageSDK = new lionxStorage("sessionStorage");
+
+sessionStorageSDK.set("user", { id: 1, name: "John" });
+console.log(sessionStorageSDK.get("user"));
+
+sessionStorageSDK.update("user", { id: 1, name: "John Doe" });
+console.log(sessionStorageSDK.get("user"));
+
+sessionStorageSDK.remove("user");
+console.log(sessionStorageSDK.get("user"));
+```
+<br/>
+
+---
+
+### <a id="cookies"> cookies: </a>
+
+**Description :** Stores data using browser cookies, making it available for each HTTP request sent to the server.
+
+**Use Case :** Used for managing user authentication tokens, tracking user behavior, or maintaining small pieces of state information across requests, providing a reliable method for client-server communication.
+
+#### Example Usage
+
+```javascript
+// Example usage for cookies
+const cookiesSDK = new lionxStorage("cookies");
+
+cookiesSDK.set("user", { id: 1, name: "John" });
+console.log(cookiesSDK.get("user"));
+
+cookiesSDK.update("user", { id: 1, name: "John Doe" });
+console.log(cookiesSDK.get("user"));
+
+cookiesSDK.remove("user");
+console.log(cookiesSDK.get("user"));
+```
+
+<br/>
+
+---
+
+### <a id="indexeddb"> indexedDB: </a>
+
+**Description :** Asynchronous storage with a larger capacity and more complex querying capabilities, designed for advanced data manipulation.
+
+**Use Case :** Suited for applications requiring advanced querying, indexing, and offline data storage. Ideal for complex web applications, data-intensive projects, or scenarios where structured data needs efficient management.
+
+
+When utilizing indexedDB with lionxStorage, there are additional parameters and initialization steps to consider for a seamless experience.
+
+#### Initialization
+```javascript
+// Create an instance of lionxStorage for indexedDB
+const indexedDB = new lionxStorage("my_database", "user_data", 1);
+
+// Initialize the indexedDB store, specifying the object store names in an array
+indexedDB.init(["user_data"]);
+```
+  - **Description:** To begin using indexedDB with lionxStorage, create an instance with the desired database name, object store name, and version. The init method is then used to initialize the specified object stores, allowing seamless data operations.
+
+#### Example Usage
+
+```javascript
+// Example usage for IndexedDB
+const indexedDBSDK = new lionxStorage("indexedDB", "userData", 1);
+
+async function indexedDBStorage() {
+  try {
+    indexedDBSDK.init(["user", "fruits"]); // here we can pass multiple stores names to create all at once
+    
+
+    // Operations performing on "USER" store
+    indexedDBSDK.set("user", { id: 1, name: "John" });
+    console.log(await indexedDBSDK.get("user"));
+
+    indexedDBSDK.update("user", { id: 1, name: "John Deo" });
+    console.log(await indexedDBSDK.get("user"));
+
+    indexedDBSDK.remove("user", 1); // pass the id: value
+    console.log(await indexedDBSDK.get("user"));
+
+
+    // Operations performing on "FRUITS" store
+    indexedDBSDK.set("fruits", { id: 123, name: "Apple", price: 200 });
+    indexedDBSDK.set("fruits", { id: 124, name: "Banana", price: 100 });
+    indexedDBSDK.set("fruits", { id: 125, name: "Cherry", price: 150 });
+
+    console.log(await indexedDBSDK.get("fruits"));
+
+    indexedDBSDK.update("fruits", { id: 123, price: 250 });
+    console.log(await indexedDBSDK.get("fruits"));
+
+    indexedDBSDK.remove("fruits", 123); // pass the id: value
+    console.log(await indexedDBSDK.get("fruits"));
+
+
+  } catch (error) {
+    console.log("IndexedDB caught error : ", error);
+  }
+}
+
+indexedDBStorage();
+```
+
+ - **NOTE:** For indexedDB, always provide a unique ID when creating data; this ID serves as the key for data retrieval, updates, and deletions. For eg: ```{ id: 123, ...}```
+
+
+
+<br/>
+
+### Screenshot
+
+<img src="screenshot.png">
+
+## Need Assistance?
+
+Lost? Need help? Try the lionxStorage API documentation
+
+If you're facing challenges or wish to contribute to lionxStorage, check the [existing issues](https://github.com/lionxStorage/lionxStorage/issues) to see if your concern has been addressed. If not, [please open a new issue](https://github.com/lionxStorage/lionxStorage/issues/new) to seek help or share your insights. Your contributions and feedback are valued!
+
+## Framework Support
+
+lionxStorage is designed to be framework-agnostic, making it suitable for integration with various frontend frameworks and libraries. Whether you are working with React, Angular, Vue, Next.js, NuxtJs, Svelte, Remix or any other frontend framework, lionxStorage provides a consistent and easy-to-use interface for local data storage. 
+
+Its simplicity and flexibility make it adaptable to the specific requirements of different projects and development environments.
+
+
+## License
+
+lionxStorage is licensed under the MIT License - see the [LICENSE](https://github.com/lionxStorage/lionxStorage/blob/main/LICENSE). file for details.
+
+---
+
+Copyright (c) 2024 [Vivek Mengu](https://github.com/vivekmengu016)
+([Contributors](https://github.com/lionxStorage/lionxStorage/graphs/contributors)).
