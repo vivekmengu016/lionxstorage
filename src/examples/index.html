@@ -6,12 +6,14 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="../../dist/lionxstorage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lionxstorage@latest/dist/lionxstorage.js"></script>
     <script>
-      var a = new LionXStorage("localStorage");
-      console.log("oneee", a);
-      a.set("hello", { name: "whilims" });
-      document.body.innerHTML = a.get("hello").name;
+      // Create an instance with the desired storage type
+      const storeData = new lionxStorage("localStorage");
+      storeData.set("key", "value");
+
+      // Get data
+      console.log(storeData.get("key")); // Output: 'value'
     </script>
   </body>
 </html>

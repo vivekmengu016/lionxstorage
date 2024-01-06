@@ -10,7 +10,7 @@
 
 lionxStorage is a Javascript and React library that provides a unified interface for storing and retrieving data using various storage mechanisms such as `localStorage`, `sessionStorage`, `cookies`, and `indexedDB`. It is designed to work seamlessly in both Javascript and React environments.
 
-See the [examples folder](https://github.com/lionxStorage/lionxStorage/blob/main/examples) for more examples
+See the [examples folder](https://github.com/vivekmengu016/lionxstorage/blob/main/examples) for more examples
 
 <br/>
 
@@ -189,10 +189,10 @@ When utilizing indexedDB with lionxStorage, there are additional parameters and 
 #### Initialization
 ```javascript
 // Create an instance of lionxStorage for indexedDB
-const indexedDB = new lionxStorage("my_database", "user_data", 1);
+const indexedDB = new lionxStorage("indexedDB", "my_database", 1);
 
 // Initialize the indexedDB store, specifying the object store names in an array
-indexedDB.init(["user_data"]);
+indexedDB.init(["user_data_store"]);
 ```
   - **Description:** To begin using indexedDB with lionxStorage, create an instance with the desired database name, object store name, and version. The init method is then used to initialize the specified object stores, allowing seamless data operations.
 
@@ -254,7 +254,7 @@ indexedDBStorage();
 
 Lost? Need help? Try the lionxStorage API documentation
 
-If you're facing challenges or wish to contribute to lionxStorage, check the [existing issues](https://github.com/lionxStorage/lionxStorage/issues) to see if your concern has been addressed. If not, [please open a new issue](https://github.com/lionxStorage/lionxStorage/issues/new) to seek help or share your insights. Your contributions and feedback are valued!
+If you're facing challenges or wish to contribute to lionxStorage, check the [existing issues](https://github.com/vivekmengu016/lionxstorage/issues) to see if your concern has been addressed. If not, [please open a new issue](https://github.com//vivekmengu016/lionxstorage/issues/new) to seek help or share your insights. Your contributions and feedback are valued!
 
 ## Framework Support
 
@@ -265,9 +265,9 @@ Its simplicity and flexibility make it adaptable to the specific requirements of
 
 ## License
 
-lionxStorage is licensed under the MIT License - see the [LICENSE](https://github.com/lionxStorage/lionxStorage/blob/main/LICENSE). file for details.
+lionxStorage is licensed under the MIT License - see the [LICENSE](https://github.com/vivekmengu016/lionxstorage/blob/main/LICENSE). file for details.
 
 ---
 
 Copyright (c) 2024 [Vivek Mengu](https://github.com/vivekmengu016)
-([Contributors](https://github.com/lionxStorage/lionxStorage/graphs/contributors)).
+([Contributors](https://github.com/vivekmengu016/lionxstorage/graphs/contributors)).
