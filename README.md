@@ -10,7 +10,7 @@
 
 lionxStorage is a Javascript and React library that provides a unified interface for storing and retrieving data using various storage mechanisms such as `localStorage`, `sessionStorage`, `cookies`, and `indexedDB`. It is designed to work seamlessly in both Javascript and React environments.
 
-See the [examples folder](https://github.com/vivekmengu016/lionxstorage/blob/main/examples) for more examples
+See the [examples folder](https://github.com/vivekmengu016/lionxstorage/tree/main/src/examples) for more examples
 
 <br/>
 
