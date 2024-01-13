@@ -20,10 +20,10 @@ const IndexedDBStorage = () => {
       indexedDBSDK.set("user", { id: 1, name: "John" });
 
       // getting data
-      const retriveUsersData = await indexedDBSDK.get("user");
+      const retrieveUsersData = await indexedDBSDK.get("user");
 
       // storing in local state
-      setUser(retriveUsersData);
+      setUser(retrieveUsersData);
 
       // setting data
       indexedDBSDK.set("fruits", { id: 123, name: "Apple", price: 200 });
@@ -31,8 +31,8 @@ const IndexedDBStorage = () => {
       indexedDBSDK.set("fruits", { id: 125, name: "Cherry", price: 150 });
 
       // getting data 
-      const retriveFruitsData = await indexedDBSDK.get("fruits");
-      setFruits(retriveFruitsData);
+      const retrieveFruitsData = await indexedDBSDK.get("fruits");
+      setFruits(retrieveFruitsData);
 
     } catch (error) {
       console.log("IndexedDB caught error : ", error);

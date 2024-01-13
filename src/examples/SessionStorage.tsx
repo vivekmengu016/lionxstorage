@@ -11,10 +11,10 @@ const SessionStorage = () => {
     storeData.set('user', { name: "john" });
 
     // getting data
-    const retriveData = storeData.get("user");
+    const retrieveData = storeData.get("user");
 
     // store in local state
-    setUser(retriveData);
+    setUser(retrieveData);
 
   }, []);
   
