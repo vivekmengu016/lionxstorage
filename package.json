@@ -21,7 +21,7 @@
     "session storage",
     "cookie usage"
   ],
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -32,9 +32,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vivekmengu016/lionxstorage.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/vivekmengu016"
   },
   "license": "MIT",
   "dependencies": {
