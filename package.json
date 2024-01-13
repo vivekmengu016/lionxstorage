@@ -34,7 +34,7 @@
     "url": "git+https://github.com/vivekmengu016/lionxstorage.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/vivekmengu"
   },
   "license": "MIT",
   "dependencies": {
